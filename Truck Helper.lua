@@ -1,7 +1,7 @@
 script_name("Truck Helper")
 script_author("@TelefonRedmi12c")
 script_version("2.0")
------------------ [Библиотеки] ---------------------------
+----------------- [Library] ---------------------------
 local sampev = require("samp.events")
 local imgui = require 'mimgui'
 local encoding = require 'encoding'
