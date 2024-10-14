@@ -91,32 +91,32 @@ function downloadFile(url, path)
   end
   
 function check_update()
-    sampAddChatMessage('Проверка наличия обновлений...', -1)
+    sampAddChatMessage(u8'Проверка наличия обновлений...', -1)
     local currentVersionFile = io.open(lmPath, "r")
     local currentVersion = currentVersionFile:read("*a")
     currentVersionFile:close()
     local response = http.request(lmUrl)
     if response and response ~= currentVersion then
-        sampAddChatMessage("У вас не актуальная версия! Для обновления перейдите во вкладку: Информация", -1)
+        sampAddChatMessage( u8"У вас не актуальная версия! Для обновления перейдите во вкладку: Информация", -1)
     else
-        sampAddChatMessage("У вас актуальная версия скрипта.", -1)
+        sampAddChatMessage( u8"У вас актуальная версия скрипта.", -1)
     end
 end
 local function updateScript(scriptUrl, scriptPath)
-    sampAddChatMessage("Проверка наличия обновлений...", -1)
+    sampAddChatMessage(u8"Проверка наличия обновлений...", -1)
     local response = http.request(scriptUrl)
     if response and response ~= currentVersion then
-        sampAddChatMessage("Доступна новая версия скрипта! Обновление...", -1)
+        sampAddChatMessage(u8"Доступна новая версия скрипта! Обновление...", -1)
         
         local success = downloadFile(scriptUrl, scriptPath)
         if success then
-            sampAddChatMessage("Скрипт успешно обновлен.", -1)
+            sampAddChatMessage(u8"Скрипт успешно обновлен.", -1)
             thisScript():reload()
         else
-            sampAddChatMessage("Не удалось обновить скрипт.", -1)
+            sampAddChatMessage(u8"Не удалось обновить скрипт.", -1)
         end
     else
-        sampAddChatMessage("Скрипт уже является последней версией.", -1)
+        sampAddChatMessage(u8"Скрипт уже является последней версией.", -1)
     end
 end
 
