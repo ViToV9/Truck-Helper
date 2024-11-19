@@ -1,8 +1,8 @@
 script_name("Truck Helper")
 script_author("@TelefonRedmi12c // Jake")
-script_version("1.2")
+script_version("1.90")
 local VersionV = '1.2'
------------------ [Библиотеки] ---------------------------
+----------------- [ГЃГЁГЎГ«ГЁГ®ГІГҐГЄГЁ] ---------------------------
 local sampev = require("samp.events")
 local imgui = require 'mimgui'
 local encoding = require 'encoding'
@@ -26,8 +26,8 @@ local tab = 0
 local OilMenu = new.bool(false)
 local WinState = new.bool(false)
 local WinState2 = new.bool(false)
-local weight = 'не пройдено'
-local direct = 'Неизвестно'
+local weight = 'Г­ГҐ ГЇГ°Г®Г©Г¤ГҐГ­Г®'
+local direct = 'ГЌГҐГЁГ§ГўГҐГ±ГІГ­Г®'
 local iniFile = 'Truck HelperConfig.ini'
 
 function imgui.CenterText(text)
@@ -105,32 +105,32 @@ function downloadFile(url, path)
   end
   
 function check_update()
-    msg('Проверка наличия обновлений...')
+    msg('ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г Г«ГЁГ·ГЁГї Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГ©...')
     local currentVersionFile = io.open(lmPath, "r")
     local currentVersion = currentVersionFile:read("*a")
     currentVersionFile:close()
     local response = http.request(lmUrl)
     if response and response ~= currentVersion then
-        msg("У вас не актуальная версия! Для обновления перейдите во вкладку: Информация")
+        msg("Г“ ГўГ Г± Г­ГҐ Г ГЄГІГіГ Г«ГјГ­Г Гї ГўГҐГ°Г±ГЁГї! Г„Г«Гї Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГї ГЇГҐГ°ГҐГ©Г¤ГЁГІГҐ ГўГ® ГўГЄГ«Г Г¤ГЄГі: Г€Г­ГґГ®Г°Г¬Г Г¶ГЁГї")
     else
-        msg("У вас актуальная версия скрипта.")
+        msg("Г“ ГўГ Г± Г ГЄГІГіГ Г«ГјГ­Г Гї ГўГҐГ°Г±ГЁГї Г±ГЄГ°ГЁГЇГІГ .")
     end
 end
 local function updateScript(scriptUrl, scriptPath)
-    msg("Проверка наличия обновлений...")
+    msg("ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г Г«ГЁГ·ГЁГї Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГ©...")
     local response = http.request(scriptUrl)
     if response and response ~= currentVersion then
-        msg("Доступна новая версия скрипта! Обновление...")
+        msg("Г„Г®Г±ГІГіГЇГ­Г  Г­Г®ГўГ Гї ГўГҐГ°Г±ГЁГї Г±ГЄГ°ГЁГЇГІГ ! ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ...")
         
         local success = downloadFile(scriptUrl, scriptPath)
         if success then
-            msg("Скрипт успешно обновлен.")
+            msg("Г‘ГЄГ°ГЁГЇГІ ГіГ±ГЇГҐГёГ­Г® Г®ГЎГ­Г®ГўГ«ГҐГ­.")
             thisScript():reload()
         else
-            msg("Не удалось обновить скрипт.")
+            msg("ГЌГҐ ГіГ¤Г Г«Г®Г±Гј Г®ГЎГ­Г®ГўГЁГІГј Г±ГЄГ°ГЁГЇГІ.")
         end
     else
-        msg("Скрипт уже является последней версией.")
+        msg("Г‘ГЄГ°ГЁГЇГІ ГіГ¦ГҐ ГїГўГ«ГїГҐГІГ±Гї ГЇГ®Г±Г«ГҐГ¤Г­ГҐГ© ГўГҐГ°Г±ГЁГҐГ©.")
     end
 end
 
@@ -209,37 +209,37 @@ imgui.OnFrame(function() return WinState2[0] end, function(player)
     imgui.Begin('##2Window', WinState2, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoTitleBar + imgui.WindowFlags.AlwaysAutoResize) 
     
         if ini.knopa.pochinka then
-            if imgui.Button(fa.CAR_WRENCH .. u8' Починть') then 
+            if imgui.Button(fa.CAR_WRENCH .. u8' ГЏГ®Г·ГЁГ­ГІГј') then 
                 sampSendChat('/repcar')
             end
         end
         
         if ini.knopa.fillcar then
-            if imgui.Button(fa.GAS_PUMP .. u8' Заправить') then 
+            if imgui.Button(fa.GAS_PUMP .. u8' Г‡Г ГЇГ°Г ГўГЁГІГј') then 
                 sampSendChat('/fillcar')
             end
         end
 
         if ini.knopa.key then
-            if imgui.Button(fa.KEY .. u8' Ключи') then 
+            if imgui.Button(fa.KEY .. u8' ГЉГ«ГѕГ·ГЁ') then 
                 sampSendChat('/key')
             end
         end
        
         if ini.knopa.dveri then
-            if imgui.Button(fa.DOOR_OPEN .. u8' Двери') then 
+            if imgui.Button(fa.DOOR_OPEN .. u8' Г„ГўГҐГ°ГЁ') then 
                 sampSendChat('/lock')
             end
         end
          
          if ini.knopa.rejim then
-            if imgui.Button(u8' Режим') then 
+            if imgui.Button(u8' ГђГҐГ¦ГЁГ¬') then 
                 sampSendChat('/style')
             end
         end
         
          if ini.knopa.domk then
-            if imgui.Button(fa.BLINDS_RAISED .. u8' Домкрат') then 
+            if imgui.Button(fa.BLINDS_RAISED .. u8' Г„Г®Г¬ГЄГ°Г ГІ') then 
                 sampSendChat('/domkrat')
             end
         end
@@ -256,23 +256,23 @@ imgui.OnFrame(function() return WinState[0] end, function(player)
         end
         
         if ini.cfg.zarplata then
-            imgui.Text(fa.CIRCLE_DOLLAR .. u8'  Зарплата: '  ..separator(zarplatas).. '$')
+            imgui.Text(fa.CIRCLE_DOLLAR .. u8'  Г‡Г Г°ГЇГ«Г ГІГ : '  ..separator(zarplatas).. '$')
         end 
         
         if ini.cfg.larci then
-            imgui.Text(fa.BOX .. u8' Ларцов: ' ..boxing.. 'шт') 
+            imgui.Text(fa.BOX .. u8' Г‹Г Г°Г¶Г®Гў: ' ..boxing.. 'ГёГІ') 
         end
         
         if ini.cfg.reisi then
-            imgui.Text(fa.ROAD .. u8' Рейсов: ' ..reys) 
+            imgui.Text(fa.ROAD .. u8' ГђГҐГ©Г±Г®Гў: ' ..reys) 
         end
         
         if ini.cfg.innavigator then
-        imgui.Text(fa.ROAD .. u8' Навигатор: '..u8(direct))
+        imgui.Text(fa.ROAD .. u8' ГЌГ ГўГЁГЈГ ГІГ®Г°: '..u8(direct))
         end
         
         if ini.cfg.invzvesh then
-        imgui.Text(fa.TRUCK_RAMP_BOX .. u8' Взвешивание: '..u8(weight))
+        imgui.Text(fa.TRUCK_RAMP_BOX .. u8' Г‚Г§ГўГҐГёГЁГўГ Г­ГЁГҐ: '..u8(weight))
         end
     imgui.End()
 end)
@@ -280,14 +280,14 @@ end)
 
 local navigator = {
     x = {
-        {1484,'Лас Вентурас - Диллимор'},
-        {1476,'Лас Вентурас - Ангел Пайн'},
-        {2166,'Лос Сантос - Ангел Пайн'},
-        {2227,'Лос Сантос - Лас Пайсадас'}
+        {1484,'Г‹Г Г± Г‚ГҐГ­ГІГіГ°Г Г± - Г„ГЁГ«Г«ГЁГ¬Г®Г°'},
+        {1476,'Г‹Г Г± Г‚ГҐГ­ГІГіГ°Г Г± - ГЂГ­ГЈГҐГ« ГЏГ Г©Г­'},
+        {2166,'Г‹Г®Г± Г‘Г Г­ГІГ®Г± - ГЂГ­ГЈГҐГ« ГЏГ Г©Г­'},
+        {2227,'Г‹Г®Г± Г‘Г Г­ГІГ®Г± - Г‹Г Г± ГЏГ Г©Г±Г Г¤Г Г±'}
     },
     y = {
-        {304,'Cан Фиерро - Лас Пайсадас'},
-        {233,'Cан Фиерро - Диллимор'}
+        {304,'CГ Г­ Г”ГЁГҐГ°Г°Г® - Г‹Г Г± ГЏГ Г©Г±Г Г¤Г Г±'},
+        {233,'CГ Г­ Г”ГЁГҐГ°Г°Г® - Г„ГЁГ«Г«ГЁГ¬Г®Г°'}
     }
 }
 
@@ -305,20 +305,20 @@ function sampev.onSetRaceCheckpoint(type, position, nextPosition, size)
 end
 
 function sampev.onServerMessage(color, text)
-    if text:find("Взвешивание завершено..") then
-        weight = 'пройдено'
+    if text:find("Г‚Г§ГўГҐГёГЁГўГ Г­ГЁГҐ Г§Г ГўГҐГ°ГёГҐГ­Г®..") then
+        weight = 'ГЇГ°Г®Г©Г¤ГҐГ­Г®'
     end
-    if text:find("Вам был добавлен предмет 'Ларец дальнобойщика'") then
+    if text:find("Г‚Г Г¬ ГЎГ»Г« Г¤Г®ГЎГ ГўГ«ГҐГ­ ГЇГ°ГҐГ¤Г¬ГҐГІ 'Г‹Г Г°ГҐГ¶ Г¤Г Г«ГјГ­Г®ГЎГ®Г©Г№ГЁГЄГ '") then
         boxing = boxing + 1
     end
-    if text:find('Ваша зарплата за рейс: $(%d+)') then	    
-        local salary = text:match('Ваша зарплата за рейс: $(%d+)')
+    if text:find('Г‚Г ГёГ  Г§Г Г°ГЇГ«Г ГІГ  Г§Г  Г°ГҐГ©Г±: $(%d+)') then	    
+        local salary = text:match('Г‚Г ГёГ  Г§Г Г°ГЇГ«Г ГІГ  Г§Г  Г°ГҐГ©Г±: $(%d+)')
         zarplatas = zarplatas + salary
         reys = reys + 1
-        weight = 'не пройдено'
+        weight = 'Г­ГҐ ГЇГ°Г®Г©Г¤ГҐГ­Г®'
     end
-    if text:find('Благодаря улучшениям вашей семьи вы получаете дополнительную зарплату: $(%d+).') then	    
-        local famzp = text:match('Благодаря улучшениям вашей семьи вы получаете дополнительную зарплату: $(%d+).')
+    if text:find('ГЃГ«Г ГЈГ®Г¤Г Г°Гї ГіГ«ГіГ·ГёГҐГ­ГЁГїГ¬ ГўГ ГёГҐГ© Г±ГҐГ¬ГјГЁ ГўГ» ГЇГ®Г«ГіГ·Г ГҐГІГҐ Г¤Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­ГіГѕ Г§Г Г°ГЇГ«Г ГІГі: $(%d+).') then	    
+        local famzp = text:match('ГЃГ«Г ГЈГ®Г¤Г Г°Гї ГіГ«ГіГ·ГёГҐГ­ГЁГїГ¬ ГўГ ГёГҐГ© Г±ГҐГ¬ГјГЁ ГўГ» ГЇГ®Г«ГіГ·Г ГҐГІГҐ Г¤Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­ГіГѕ Г§Г Г°ГЇГ«Г ГІГі: $(%d+).')
         zarplatas = zarplatas + famzp
     end
 end
@@ -339,10 +339,10 @@ function sampev.onShowDialog(id, style, title, button1, button2, text)
 end)
 
 function sampev.onSendSpawn()
-sampAddChatMessage("{009EFF}[Truck Helper]: {FFFFFF}Загрузка хелпера прошла успешно!", -1)
-show_arz_notify('info', 'Truck Helper', "Загрузка хелпера прошла успешно!", 3000)
-print('[Truck Helper] Загрузка хелпера прошла успешно!')
-sampAddChatMessage("{009EFF}[Truck Helper]{FFFFFF}: Чтоб открыть меню хелпера введите команду {009EFF}/db", -1)
+sampAddChatMessage("{009EFF}[Truck Helper]: {FFFFFF}Г‡Г ГЈГ°ГіГ§ГЄГ  ГµГҐГ«ГЇГҐГ°Г  ГЇГ°Г®ГёГ«Г  ГіГ±ГЇГҐГёГ­Г®!", -1)
+show_arz_notify('info', 'Truck Helper', "Г‡Г ГЈГ°ГіГ§ГЄГ  ГµГҐГ«ГЇГҐГ°Г  ГЇГ°Г®ГёГ«Г  ГіГ±ГЇГҐГёГ­Г®!", 3000)
+print('[Truck Helper] Г‡Г ГЈГ°ГіГ§ГЄГ  ГµГҐГ«ГЇГҐГ°Г  ГЇГ°Г®ГёГ«Г  ГіГ±ГЇГҐГёГ­Г®!')
+sampAddChatMessage("{009EFF}[Truck Helper]{FFFFFF}: Г—ГІГ®ГЎ Г®ГІГЄГ°Г»ГІГј Г¬ГҐГ­Гѕ ГµГҐГ«ГЇГҐГ°Г  ГўГўГҐГ¤ГЁГІГҐ ГЄГ®Г¬Г Г­Г¤Гі {009EFF}/db", -1)
 end
 
 function imgui.CenterText(text)
@@ -356,94 +356,94 @@ imgui.OnFrame(function() return OilMenu[0] end, function(player)
     imgui.SetNextWindowPos(imgui.ImVec2(sizeX / 2, sizeY / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
     imgui.Begin(fa.TRUCK .. ' Truck Helper', OilMenu, imgui.WindowFlags.NoCollapse)
     if imgui.BeginTabBar('Tabs') then	           										  
-        if imgui.BeginTabItem(fa.GEAR .. u8' Настройки инфобара') then
+        if imgui.BeginTabItem(fa.GEAR .. u8' ГЌГ Г±ГІГ°Г®Г©ГЄГЁ ГЁГ­ГґГ®ГЎГ Г°Г ') then
             
-                if imgui.Checkbox(u8'Отображение информации',infobarik) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГЁ',infobarik) then
                     WinState[0]= not WinState[0]              
                 end
-                if imgui.Checkbox(u8'Отображение секундомера',vremena) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ Г±ГҐГЄГіГ­Г¤Г®Г¬ГҐГ°Г ',vremena) then
                     ini.cfg.vremena = vremena[0]
                     cfg_save() 
                 end 
     
-                if imgui.Checkbox(u8'Отображение зарплаты',zarplata) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ Г§Г Г°ГЇГ«Г ГІГ»',zarplata) then
                     ini.cfg.zarplata = zarplata[0]
                     cfg_save() 
                 end 
                                                                 
-                if imgui.Checkbox(u8'Отображение ларцов',larci) then 
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ Г«Г Г°Г¶Г®Гў',larci) then 
                     ini.cfg.larci = larci[0]
                     cfg_save() 
                 end
                                                         
-                if imgui.Checkbox(u8'Отображение рейсов',reisi) then 
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ Г°ГҐГ©Г±Г®Гў',reisi) then 
                     ini.cfg.reisi = reisi[0]
                     cfg_save() 
                 end     
-                if imgui.Checkbox(u8'Отображение навигатора',innavigator) then 
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ Г­Г ГўГЁГЈГ ГІГ®Г°Г ',innavigator) then 
                     ini.cfg.innavigator = innavigator[0]
                     cfg_save() 
                 end   
-                 if imgui.Checkbox(u8'Отображение взвешивания',invzvesh) then 
+                 if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГўГ§ГўГҐГёГЁГўГ Г­ГЁГї',invzvesh) then 
                     ini.cfg.invzvesh = invzvesh[0]
                     cfg_save() 
                 end   
                 imgui.Separator()
-                if imgui.Checkbox(fa.FORWARD .. u8' Скип лишних диалогов',skipdialogi) then         
-          ini.knopa.skipdialogi = skipdialogi[0]      sampAddChatMessage('{009EFF}[Truck Helper]: {FFFFFF}Теперь у вас' .. (skipdialogi[0] and ' автоматически будут скипаться лишние диалоги.' or ' не будут автоматически скипаться лишние диалоги.'), -1)        
+                if imgui.Checkbox(fa.FORWARD .. u8' Г‘ГЄГЁГЇ Г«ГЁГёГ­ГЁГµ Г¤ГЁГ Г«Г®ГЈГ®Гў',skipdialogi) then         
+          ini.knopa.skipdialogi = skipdialogi[0]      sampAddChatMessage('{009EFF}[Truck Helper]: {FFFFFF}Г’ГҐГЇГҐГ°Гј Гі ГўГ Г±' .. (skipdialogi[0] and ' Г ГўГІГ®Г¬Г ГІГЁГ·ГҐГ±ГЄГЁ ГЎГіГ¤ГіГІ Г±ГЄГЁГЇГ ГІГјГ±Гї Г«ГЁГёГ­ГЁГҐ Г¤ГЁГ Г«Г®ГЈГЁ.' or ' Г­ГҐ ГЎГіГ¤ГіГІ Г ГўГІГ®Г¬Г ГІГЁГ·ГҐГ±ГЄГЁ Г±ГЄГЁГЇГ ГІГјГ±Гї Г«ГЁГёГ­ГЁГҐ Г¤ГЁГ Г«Г®ГЈГЁ.'), -1)        
                     cfg_save() 
                 end                      
                 imgui.Separator()
-        if imgui.Button(u8'Секундомер вкл/выкл') then
+        if imgui.Button(u8'Г‘ГҐГЄГіГ­Г¤Г®Г¬ГҐГ° ГўГЄГ«/ГўГ»ГЄГ«') then
             tstate()
         end   
         imgui.SameLine() 
-if imgui.Button(u8' Очистить секундомер') then
+if imgui.Button(u8' ГЋГ·ГЁГ±ГІГЁГІГј Г±ГҐГЄГіГ­Г¤Г®Г¬ГҐГ°') then
 resetCounter()
 end   
 imgui.SameLine()      
-        if imgui.Button(u8'Очистить всё') then
+        if imgui.Button(u8'ГЋГ·ГЁГ±ГІГЁГІГј ГўГ±Вё') then
     deleteAll()
             end
                                      
             imgui.EndTabItem()
         end
-        if imgui.BeginTabItem(fa.GEAR .. u8' Настройки хелпбара') then
+        if imgui.BeginTabItem(fa.GEAR .. u8' ГЌГ Г±ГІГ°Г®Г©ГЄГЁ ГµГҐГ«ГЇГЎГ Г°Г ') then
             
-                if imgui.Checkbox(u8'Отображение кнопок',infobarik2) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ­Г®ГЇГ®ГЄ',infobarik2) then
                     WinState2[0]= not WinState2[0]              
                 end     
-                if imgui.Checkbox(u8'Отображение кнопки [ Починка ] ',pochinka) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ­Г®ГЇГЄГЁ [ ГЏГ®Г·ГЁГ­ГЄГ  ] ',pochinka) then
                     ini.knopa.pochinka = pochinka[0]
                     cfg_save() 
                 end 
                 
-                if imgui.Checkbox(u8'Отображение кнопки [ Заправка ] ',fillcar) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ­Г®ГЇГЄГЁ [ Г‡Г ГЇГ°Г ГўГЄГ  ] ',fillcar) then
                     ini.knopa.fillcar = fillcar[0]
                     cfg_save() 
                 end 
                 
-                if imgui.Checkbox(u8'Отображение кнопки [ Ключи ] ',key) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ­Г®ГЇГЄГЁ [ ГЉГ«ГѕГ·ГЁ ] ',key) then
                     ini.knopa.key = key[0]
                     cfg_save() 
                end
                     
-                if imgui.Checkbox(u8'Отображение кнопки [ Двери ] ',dveri) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ­Г®ГЇГЄГЁ [ Г„ГўГҐГ°ГЁ ] ',dveri) then
                     ini.knopa.dveri = dveri[0]
                     cfg_save()
                end
                
-                if imgui.Checkbox(u8'Отображение кнопки [ Режим ] ',rejim) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ­Г®ГЇГЄГЁ [ ГђГҐГ¦ГЁГ¬ ] ',rejim) then
                     ini.knopa.rejim = rejim[0]
                     cfg_save() 
                 end
                 
-                if imgui.Checkbox(u8'Отображение кнопки [ Домкрат ] ',domk) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ­Г®ГЇГЄГЁ [ Г„Г®Г¬ГЄГ°Г ГІ ] ',domk) then
                     ini.knopa.domk = domk[0]
                     cfg_save() 
                 end
                 
-                if imgui.Checkbox(u8'Отображение кнопки [ Открытие дверей ] ',door) then
+                if imgui.Checkbox(u8'ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ­Г®ГЇГЄГЁ [ ГЋГІГЄГ°Г»ГІГЁГҐ Г¤ГўГҐГ°ГҐГ© ] ',door) then
                     ini.knopa.door = door[0]
                     cfg_save() 
                 end
@@ -451,20 +451,20 @@ imgui.SameLine()
         imgui.EndTabItem()
     end 
     
-    if imgui.BeginTabItem(fa.GEAR .. u8' Настройки') then
+    if imgui.BeginTabItem(fa.GEAR .. u8' ГЌГ Г±ГІГ°Г®Г©ГЄГЁ') then
     
-    imgui.Text(fa.CIRCLE_USER..u8" Разработчик данного хелпера: TelefonRedmi12c // Jake")
+    imgui.Text(fa.CIRCLE_USER..u8" ГђГ Г§Г°Г ГЎГ®ГІГ·ГЁГЄ Г¤Г Г­Г­Г®ГЈГ® ГµГҐГ«ГЇГҐГ°Г : TelefonRedmi12c // Jake")
 				imgui.Separator()
-				imgui.Text(fa.CIRCLE_INFO..u8' Установленная версия хелпера ' .. VersionV)
+				imgui.Text(fa.CIRCLE_INFO..u8' Г“Г±ГІГ Г­Г®ГўГ«ГҐГ­Г­Г Гї ГўГҐГ°Г±ГЁГї ГµГҐГ«ГЇГҐГ°Г  ' .. VersionV)
 				
 				imgui.Separator()
-				imgui.Text(fa.HEADSET..u8" Тех.поддержка по хелперу:")
+				imgui.Text(fa.HEADSET..u8" Г’ГҐГµ.ГЇГ®Г¤Г¤ГҐГ°Г¦ГЄГ  ГЇГ® ГµГҐГ«ГЇГҐГ°Гі:")
 				imgui.SameLine()
 				if imgui.SmallButton('Telegram') then
 					openLink('https://t.me/Jake_S2')
 				end
 				imgui.Separator()
-				imgui.Text(fa.GLOBE..u8" Тема хелпера на форуме BlastHack:")
+				imgui.Text(fa.GLOBE..u8" Г’ГҐГ¬Г  ГµГҐГ«ГЇГҐГ°Г  Г­Г  ГґГ®Г°ГіГ¬ГҐ BlastHack:")
 				imgui.SameLine()
 				if imgui.SmallButton(u8'https://www.blast.hk/threads/217684/') then
 					openLink('https://www.blast.hk/threads/217684/')							
@@ -478,20 +478,20 @@ end
           apply_n_t()
             end
             imgui.SameLine()
-            imgui.Text(fa.NOTE_STICKY..u8' Цвет MoonMonet') 
+            imgui.Text(fa.NOTE_STICKY..u8' Г–ГўГҐГІ MoonMonet') 
             
             imgui.Separator()
             imgui.Separator()
-				imgui.CenterText(u8' Команды')
-	imgui.Text(fa.CALCULATOR .. u8' /calc - Калькулятор')
+				imgui.CenterText(u8' ГЉГ®Г¬Г Г­Г¤Г»')
+	imgui.Text(fa.CALCULATOR .. u8' /calc - ГЉГ Г«ГјГЄГіГ«ГїГІГ®Г°')
                 
 						imgui.Separator()  
 				      imgui.Separator()
-	if imgui.Button(u8" Перезагрузить") then script_reload() end
+	if imgui.Button(u8" ГЏГҐГ°ГҐГ§Г ГЈГ°ГіГ§ГЁГІГј") then script_reload() end
 	imgui.SameLine()
-	if imgui.Button(u8" Выгрузить") then script_unload() end
+	if imgui.Button(u8" Г‚Г»ГЈГ°ГіГ§ГЁГІГј") then script_unload() end
             		imgui.Separator()
-if imgui.Button(u8'Обновить(возможно зависание игры на 10-15 секунд)') then
+if imgui.Button(u8'ГЋГЎГ­Г®ГўГЁГІГј(ГўГ®Г§Г¬Г®Г¦Г­Г® Г§Г ГўГЁГ±Г Г­ГЁГҐ ГЁГЈГ°Г» Г­Г  10-15 Г±ГҐГЄГіГ­Г¤)') then
     updateScript(lmUrl, lmPath)
 end
 					        
@@ -503,7 +503,7 @@ end
 end)           
 
 function deleteAll()
-    --и тут всё что нужно
+    --ГЁ ГІГіГІ ГўГ±Вё Г·ГІГ® Г­ГіГ¦Г­Г®
     reys = 0
     boxing = 0
     zarplatas = 0
@@ -545,19 +545,19 @@ function resetCounter()
 end
 
 sampRegisterChatCommand('calc', function(arg) 
-        if #arg == 0 or not arg:find('%d+') then return sampAddChatMessage('[Калькулятор]: {DE9F00}Ошибка, введите /calc [пример]', 0x08A351) end
+        if #arg == 0 or not arg:find('%d+') then return sampAddChatMessage('[ГЉГ Г«ГјГЄГіГ«ГїГІГ®Г°]: {DE9F00}ГЋГёГЁГЎГЄГ , ГўГўГҐГ¤ГЁГІГҐ /calc [ГЇГ°ГЁГ¬ГҐГ°]', 0x08A351) end
         sampAddChatMessage('[Truck Helper]: {009EFF}'..arg..' = '..assert(load("return " .. arg))(), 0x08A351)
     end)
 
 function get_clock(time)
     local timezone_offset = 86400 - os.date('%H', 0) * 3600
     if tonumber(time) >= 86400 then onDay = true else onDay = false end
-    return os.date((onDay and math.floor(time / 86400)..'д ' or '')..'%H:%M:%S', time + timezone_offset)
+    return os.date((onDay and math.floor(time / 86400)..'Г¤ ' or '')..'%H:%M:%S', time + timezone_offset)
 end
 
 function script_reload()
 lua_thread.create(function()
-show_arz_notify('info', 'Truck Helper', "Перезагрузка....!", 500)
+show_arz_notify('info', 'Truck Helper', "ГЏГҐГ°ГҐГ§Г ГЈГ°ГіГ§ГЄГ ....!", 500)
 wait(0)
 thisScript():reload()
 end)
@@ -565,7 +565,7 @@ end
 
 function script_unload()
 lua_thread.create(function()
-show_arz_notify('info', 'Truck Helper', "Выключение....!", 500)
+show_arz_notify('info', 'Truck Helper', "Г‚Г»ГЄГ«ГѕГ·ГҐГ­ГЁГҐ....!", 500)
 wait(0)
 thisScript():unload()
 end)
